@@ -1,0 +1,156 @@
+@import "Fonts.scss";
+@import "Vars.scss";
+:root {
+	--white: #fff;
+	--black: #1b1b1b;
+	--gray: #f4f4f4;
+	--red: #f03939;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	font-family: "TT Norms", sans-serif !important;
+	width: 100vw;
+	height: 100vh;
+	overflow-y: hidden;
+	color: $textColor;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+body::-webkit-scrollbar {
+	width: 0px;
+}
+
+.wrapper {
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 102vh;
+
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 30px;
+		height: 100vh;
+		@media (max-width: 325px) {
+			padding: 30px 10px 10px 10px;
+		}
+	}
+}
+
+.container {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 50px 0;
+	position: relative;
+	&.web {
+		margin: 150px auto 100px;
+		@media (max-width: 1240px) {
+			padding: 50px;
+			margin: 50px auto 0;
+			@media (max-width: 768px) {
+				padding: 0;
+				margin: 50px auto 0;
+			}
+		}
+	}
+	&.mob {
+		padding: 0;
+		margin: 50px auto 0;
+	}
+	@media (max-width: 768px) {
+		padding: 0;
+		margin: 50px auto 0;
+	}
+}
+
+.text-center {
+	text-align: center;
+}
+
+.center {
+	max-width: 1240px;
+	padding: 0;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: relative;
+}
+
+h1 {
+	font-size: 70px;
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+}
+
+input {
+	font-family: "TT Norms", sans-serif !important;
+}
+
+.heading {
+	margin: 100px 0;
+	@media (max-width: 768px) {
+		padding: 0;
+		margin: 0 auto 100px;
+	}
+	.title {
+		text-align: left;
+		max-width: 500px;
+		@media (max-width: 768px) {
+			padding: 0;
+			margin: 0 auto 0;
+			font-size: 30px;
+		}
+	}
+}
+.heading__small {
+	margin: 100px 0 50px;
+	.title {
+		max-width: 500px;
+	}
+}
+
+.black {
+	background: #1b1b1b;
+	color: #fff;
+}
+
+h3.dark {
+	font-size: 40px;
+	color: $textColor;
+}
+
+h2.dark {
+	font-size: 40px;
+	color: $textColor;
+	margin-bottom: 10px;
+	@media (max-width: 768px) {
+		font-size: 30px;
+		padding: 0;
+		margin-bottom: 30px;
+	}
+}
+
+.category__img {
+	width: 50%;
+	margin: 0 auto;
+}

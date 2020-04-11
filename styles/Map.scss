@@ -1,0 +1,60 @@
+.leaflet-container {
+	height: 581px;
+	width: 737px;
+	position: relative;
+	// float: right;
+	z-index: 0;
+	@media (max-width: 1240px) {
+		min-height: 660px;
+		height: 100%;
+		@media (max-width: 768px) {
+			width: 100%;
+			margin-bottom: 115px;
+			height: 90vh;
+		}
+	}
+}
+
+#locate-position {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 240px;
+	left: 50px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.leaflet-marker-icon {
+	transition: 2s;
+	transform: rotate(-45deg);
+}
+
+.leaflet-tile-container {
+	img {
+		filter: grayscale(1);
+	}
+}
+
+// #housenumbers {
+// 	text-name: "[addr:housenumber]";
+// 	text-placement: interior;
+// 	text-min-distance: 1;
+// 	text-wrap-width: 0;
+// 	// text-face-name: @book-fonts;
+// 	text-fill: #444;
+// 	text-size: 9;
+// }
+
+// #housenames {
+// 	text-name: "[addr:housename]";
+// 	text-placement: interior;
+// 	text-wrap-width: 20;
+// 	// text-face-name: @book-fonts;
+// 	text-size: 8;
+// 	text-fill: #444;
+// 	[zoom >="18"] {
+// 		text-size: 9;
+// 	}
+// }
