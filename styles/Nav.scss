@@ -1,0 +1,173 @@
+@import "Vars.scss";
+
+.nav-wrapper {
+	width: 100%;
+	z-index: 500;
+	transition: 0.5s;
+	height: 150px;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 150px;
+	max-width: 350px;
+	width: 350px;
+	text-align: left;
+	position: relative;
+	left: 41%;
+	// transform: translateX(-50%);
+	// margin-left: 50px;
+	// padding-left: 100px;
+	@media (max-width: 988px) {
+		max-width: 300px;
+		@media (max-width: 988px) {
+			max-width: 250px;
+			@media (max-width: 950px) {
+				left: 42%;
+			}
+		}
+	}
+}
+
+nav a {
+	color: $textColor;
+	border: 0;
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 400;
+	position: relative;
+	display: flex;
+	align-items: center;
+	// text-align: center;
+	text-decoration: none;
+	// margin: 0 auto;
+	@media (max-width: 988px) {
+		font-size: 15px;
+	}
+}
+
+.logo {
+	color: transparent;
+	width: 232px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	background: url("../assets/img/metra_logo3_dark.png") 50% 50% / contain no-repeat;
+	@media (max-width: 1240px) {
+		left: 50px;
+	}
+}
+
+.nav__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 50px;
+	transition: 0.3s;
+	position: relative;
+}
+
+.nav-wrapper.visibleNav {
+	transform: translateY(0);
+}
+.nav-wrapper.invisibleNav {
+	transform: translateY(-150px);
+}
+
+.right__text {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+	width: 350px;
+}
+.rightNav {
+	font-family: "TT Norms";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 35px;
+	position: absolute;
+	right: 0;
+	@media (max-width: 1240px) {
+		right: 50px;
+	}
+	.phone {
+		color: $textColor;
+		font-weight: 500;
+		// &:nth-child(1) {
+		// 	padding-right: 30px;
+		// }
+		@media (max-width: 1140px) {
+			font-size: 20px;
+			@media (max-width: 988px) {
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+.nav-link.active::before {
+	display: block;
+	width: 100%;
+	height: 3px;
+	content: "";
+	background: $blue;
+
+	position: absolute;
+	bottom: -13px;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: 0.3s;
+	animation: appear 0.3s ease-in;
+}
+
+.footer-link.active::before {
+	display: block;
+	width: 100%;
+	height: 1px;
+	content: "";
+	background: #000;
+
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: 0.3s;
+	animation: appear 0.3s ease-in;
+}
+
+.category-link.active::before {
+	display: block;
+	width: 100%;
+	height: 1px;
+	content: "";
+	background: #000;
+
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: 0.3s;
+	animation: appear 0.3s ease-in;
+}
+
+@keyframes appear {
+	0% {
+		width: 0px;
+		left: 0;
+	}
+
+	100% {
+		width: 100%;
+		left: 50%;
+	}
+}

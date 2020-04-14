@@ -1,26 +1,25 @@
 import React, { Component, Fragment } from "react";
-// import { Map as LeafletMap, TileLayer, Marker, Popup, ZoomControl, GeoJSON } from "react-leaflet-universal";
-import RotatedMarker from "./RotatedMarker";
+import { Map as LeafletMap, TileLayer, Marker, Popup, ZoomControl, GeoJSON } from "react-leaflet-universal";
+import RotatedMarker from "../utils/RotatedMarker";
 // import L from "leaflet";
 import { connect } from "react-redux";
 import axios from "axios";
-import update from "immutability-helper";
 import { values } from "lodash";
 import { default as bezierSpline } from "@turf/bezier-spline";
 import * as helpers from "@turf/helpers";
-import carIcon from "../assets/img/car.png";
+
 import "../scss/Map.scss";
 
-let LeafletMap, TileLayer, Marker, Popup, ZoomControl, GeoJSON, L, markerIcon;
+const carIcon = require("../../assets/img/car.png");
 
-class MyMap extends Component {
+let LeafletMap: any, TileLayer: any, Marker: any, Popup: any, ZoomControl: any, GeoJSON: any, L: any, markerIcon: any;
+export class MyMap extends Component {
 	state = { cars: [] };
-	request(that) {
+	request(that: any) {
 		const { setItems } = that.props;
 		axios.get("http://taxi.tools:8000/cabsformetrasite").then(({ data }) => {
 			const cars = values(data.carsList);
-			this.setState(prevState => ({ cars: update(prevState.cars, { $set: cars }) }));
-			setItems(this.state.cars);
+			setItems(cars);
 
 			setTimeout(() => {
 				that.request(that);
@@ -39,12 +38,6 @@ class MyMap extends Component {
 	}
 
 	componentWillMount() {
-		LeafletMap = require("react-leaflet").Map;
-		TileLayer = require("react-leaflet").TileLayer;
-		Marker = require("react-leaflet").Marker;
-		Popup = require("react-leaflet").Popup;
-		ZoomControl = require("react-leaflet").ZoomControl;
-		GeoJSON = require("react-leaflet").GeoJSON;
 		L = require("leaflet");
 		markerIcon = L.icon({
 			iconUrl: carIcon,
@@ -62,8 +55,7 @@ class MyMap extends Component {
 		if (!this.props.isReady) {
 			return "Загрузка...";
 		} else {
-			console.log(this.state.cars);
-			return this.state.cars.map((item, i) => {
+			return this.props.items.map((item, i) => {
 				let pos = [item.latitude, item.longitude];
 				return (
 					<RotatedMarker key={i} position={pos} icon={markerIcon} rotationAngle={item.course} rotationOrigin={"center"}>
@@ -172,29 +164,3 @@ class MyMap extends Component {
 		);
 	}
 }
-
-const mapState = state => ({
-	items: state.setItems.items,
-	isReady: state.setItems.isReady,
-	firstAddress: state.Quiz.data1,
-	secondAddress: state.Quiz.data2,
-	additionalAddress: state.Quiz.data3,
-	didFetched1: state.Quiz.didFetched1,
-	didFetched2: state.Quiz.didFetched2,
-	didFetched3: state.Quiz.didFetched3,
-	latitude: state.city.latitude,
-	longitude: state.city.longitude,
-	zoom: state.city.zoom,
-	res: state.Quiz.res
-});
-
-const mapDispatch = ({ setItems: { setItems }, city: { setCity, setZoom } }) => ({
-	setItems,
-	setCity,
-	setZoom
-});
-
-export default connect(
-	mapState,
-	mapDispatch
-)(MyMap);
