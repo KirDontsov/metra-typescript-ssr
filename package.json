@@ -22,7 +22,7 @@
     "isomorphic-unfetch": "3.0.0",
     "leaflet": "^1.6.0",
     "leaflet-rotatedmarker": "^0.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "next": "latest",
     "next-images": "^1.4.0",
     "next-redux-wrapper": "^5.0.0",
